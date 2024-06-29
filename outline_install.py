@@ -31,37 +31,54 @@ def main():
         return installation_result.stdout
 
     #parses the output for server key and ports
-    def parse_script_result(output: str) -> dict:
+    # def parse_script_result(output: str) -> dict:
         
-        script_data = {}
-        lines = output.splitlines()
+    #     script_data = {}
+    #     lines = output.splitlines()
         
-        for line in lines:
-            if '{' in line:
-                script_data['vpn_key'] = line[7:-4] #test this out, getting rid of ANSI 
-            elif 'Management' in line:
-                grab_numbers = line.split(' ')
-                script_data['management_port'] = grab_numbers[3] #hardcoded because output seems to be static and !Management! port number always has index = 3
-            elif 'Access' in line:
-                grab_numbers = line.split(' ')
-                script_data['access_port'] = grab_numbers[4] #hardcoded because output seems to be static and !Access! port number always has index = 4
-        print('Here is your server data! Make sure to copy the VPN key into Outline Manager. Proceeding with port configuration... \n')
-        return script_data
+    #     for line in lines:
+    #         if '{' in line:
+    #             script_data['vpn_key'] = line[7:-4] #test this out, getting rid of ANSI 
+    #         elif 'Management' in line:
+    #             grab_numbers = line.split(' ')
+    #             script_data['management_port'] = grab_numbers[3] #hardcoded because output seems to be static and !Management! port number always has index = 3
+    #         elif 'Access' in line:
+    #             grab_numbers = line.split(' ')
+    #             script_data['access_port'] = grab_numbers[4] #hardcoded because output seems to be static and !Access! port number always has index = 4
+    #     print('Here is your server data! Make sure to copy the VPN key into Outline Manager. Proceeding with port configuration... \n')
+    #     return script_data
 
 
     is_docker() 
 
     output = run_outline_install()
 
-    parsed_data = parse_script_result(output)
+    return output
 
-    print(parsed_data)
-
-    return parsed_data
-
-def get_parsed_data():
-    return main()
+def parse_script_result(output: str) -> dict:
+    
+    script_data = {}
+    lines = output.splitlines()
+    
+    for line in lines:
+        if '{' in line:
+            script_data['vpn_key'] = line[7:-4] #test this out, getting rid of ANSI 
+        elif 'Management' in line:
+            grab_numbers = line.split(' ')
+            script_data['management_port'] = grab_numbers[3] #hardcoded because output seems to be static and !Management! port number always has index = 3
+        elif 'Access' in line:
+            grab_numbers = line.split(' ')
+            script_data['access_port'] = grab_numbers[4] #hardcoded because output seems to be static and !Access! port number always has index = 4
+    print('Here is your server data! Make sure to copy the VPN key into Outline Manager. Proceeding with port configuration... \n')
+    return script_data
 
 if __name__ == "__main__":
-    get_parsed_data()
+   output = main()
+   parse_script_result(output)
+
+
+# def get_parsed_data(): what is this 
+#     return main()
+
+
 
