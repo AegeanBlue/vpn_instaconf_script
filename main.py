@@ -13,6 +13,6 @@ elif user_input == '3':
     outline_install.main()
 elif user_input == "4":
     host_conf.main()
-    outline_install.main()
-    iptables_conf.main()
+    data = outline_install.main()
+    iptables_conf.main(data)
 
