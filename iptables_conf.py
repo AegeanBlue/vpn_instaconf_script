@@ -1,9 +1,9 @@
 import subprocess
-from main import parsed_data
+import main
 
 
 def main():
-    
+    from main import parsed_data
     access_port, management_port = parsed_data['access_port'], parsed_data['management_port']
 
     command = [
