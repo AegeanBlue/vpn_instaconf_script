@@ -5,7 +5,7 @@ def main(data):
     parsed_data = data
     access_port, management_port = parsed_data['access_port'], parsed_data['management_port']
 
-    command = [
+    commands = [
         ['sudo iptables -P INPUT DROP'],
         ['iptables -A INPUT -p tcp --dport 443 -j ACCEPT'],
         ['iptables -A INPUT -p tcp --dport 22869 -j ACCEPT'],
@@ -16,8 +16,8 @@ def main(data):
         [f'iptables -A INPUT -p udp --dport {access_port} -j ACCEPT'],
     ]
 
-
-    subprocess.run(command, shell=True, text=True) #this line sends the policy change into bash
+    for command in commands:
+        subprocess.run(command, shell=True, text=True) #this line sends the policy change into bash
     subprocess.run('sudo iptables -L', shell=True) #this line simply shows all current policies 
 
 if __name__ == "__main__":
