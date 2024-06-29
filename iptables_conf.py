@@ -17,7 +17,7 @@ def main(data):
     ]
 
 
-    subprocess.run(command, shell=True) #this line sends the policy change into bash
+    subprocess.run(command, shell=True, text=True) #this line sends the policy change into bash
     subprocess.run('sudo iptables -L', shell=True) #this line simply shows all current policies 
 
 if __name__ == "__main__":
