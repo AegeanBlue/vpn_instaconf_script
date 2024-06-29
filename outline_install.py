@@ -19,6 +19,8 @@ def main():
         else:
             print('Docker is detected. Intalling Outline server... \n')
 
+        return 0
+
     #installs docker and outline server
     def run_outline_install():
         outline_install_script = 'sudo bash -c \"$(wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh)\"'
@@ -29,7 +31,7 @@ def main():
         return installation_result.stdout
 
     #parses the output for server key and ports
-    def parse_script_result(output: str) -> str:
+    def parse_script_result(output: str) -> dict:
         
         script_data = {}
         lines = output.splitlines()
@@ -54,4 +56,12 @@ def main():
     parsed_data = parse_script_result(output)
 
     print(parsed_data)
+
+    return parsed_data
+
+def get_parsed_data():
+    return main()
+
+if __name__ == "__main__":
+    get_parsed_data()
 

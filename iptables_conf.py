@@ -1,8 +1,10 @@
 import subprocess
-from outline_install import parsed_data
+import outline_install
+
 
 
 def main():
+    parsed_data = outline_install.get_parsed_data()
     access_port, management_port = parsed_data['access_port'], parsed_data['management_port']
 
     command = [
