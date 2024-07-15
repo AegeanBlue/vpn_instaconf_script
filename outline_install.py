@@ -45,7 +45,7 @@ def main():
             elif 'Access' in line:
                 grab_numbers = line.split(' ')
                 script_data['access_port'] = grab_numbers[4][:-1] #hardcoded because output seems to be static and !Access! port number always has index = 4
-        print('Here is your server data! Make sure to copy the VPN key into Outline Manager. Proceeding with port configuration... \n')
+        print('Here is your server data! Make sure to copy API key into Outline Manager. Now roceeding with port configuration... \n')
         return script_data
 
 

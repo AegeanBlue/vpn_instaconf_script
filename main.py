@@ -3,7 +3,7 @@ import outline_install
 import iptables_conf
 
 
-user_input = input('Hello, please choose the option: \n 1)Configure host \n 2)Configure iptables \n 3)Install Outline Server\n 4)Full set up(recommended) \nEnter a number: ')
+user_input = input('Please run this script with root privileges. \n!Make sure to open a second SSH connection, just in case:)! \nPlease choose the option: \n 1)Configure host \n 2)Configure iptables \n 3)Install Outline Server\n 4)Full set up(recommended) \nEnter a number: ')
 
 if user_input == '1':
     host_conf.main()

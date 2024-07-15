@@ -1,9 +1,10 @@
 import subprocess
-
+import sys
 
 def main(data):
-    parsed_data = data
-    access_port, management_port = parsed_data['access_port'], parsed_data['management_port']
+    if not data:
+        sys.exit()
+    access_port, management_port = data['access_port'], data['management_port']
 
     commands = [
         ['sudo iptables -P INPUT DROP'],
