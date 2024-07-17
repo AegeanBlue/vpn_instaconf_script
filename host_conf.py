@@ -2,8 +2,8 @@ import subprocess
 
 def main(): 
     
-    print('>>>Checking for Visudo...\n ')
-    subprocess.run('sudo apt install visudo', text=True, shell=True) # check for visudo
+    print('>>>Checking for sudo...\n ')
+    subprocess.run('apt-get install sudo', text=True, shell=True) # check for visudo
     
     print('>>>Checking for Curl...\n ')
     subprocess.run('sudo apt install curl', text=True, shell=True) #check for curl
