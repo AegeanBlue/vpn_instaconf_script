@@ -12,7 +12,7 @@ elif user_input == '2':
 elif user_input == '3':
     outline_install.main()
 elif user_input == "4":
-    host_conf.main()
+    ssh_port = host_conf.main()
     data = outline_install.main()
-    iptables_conf.main(data)
+    iptables_conf.main(data, ssh_port)
 

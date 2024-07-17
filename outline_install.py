@@ -11,7 +11,7 @@ def main():
         if 'Docker' not in docker_check.stdout[:7]:
             
             while user_prompt.lower() not in ['y','n']:
-                user_prompt = input('Docker is not installed on this machine, but is required for this script to run. Do you want to install Docker? [y/n]: ')
+                user_prompt = input('>>> Docker is not installed on this machine, but is required for this script to run. Do you want to install Docker? [y/n]: ')
 
             if user_prompt in ['n','N']:
                 print("No Docker no script. Exiting the program. \n")
@@ -21,6 +21,7 @@ def main():
 
         return 0
 
+    
     #installs docker and outline server
     def run_outline_install():
         outline_install_script = 'sudo bash -c \"$(wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh)\"'
@@ -46,11 +47,13 @@ def main():
                 grab_numbers = line.split(' ')
                 script_data['access_port'] = grab_numbers[4][:-1] #hardcoded because output seems to be static and !Access! port number always has index = 4
         print('Here is your server data! Make sure to copy API key into Outline Manager. Now roceeding with port configuration... \n')
+        print(script_data, '\n')
         return script_data
 
 
     is_docker() 
-
+    print('>>> Installing Docker and Outline Server... \n')
+    
     output = run_outline_install()
     parsed_data = parse_script_result(output)
 
