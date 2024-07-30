@@ -16,7 +16,7 @@ def main(data, ssh_port):
         [f'iptables -A INPUT -p tcp --dport {management_port} -j ACCEPT'],
         [f'iptables -A INPUT -p tcp --dport {access_port} -j ACCEPT'],
         [f'iptables -A INPUT -p udp --dport {access_port} -j ACCEPT'],
-        ['sudo systemctl restart ssh']
+        ['sudo systemctl restart ssh'],
         ['sudo iptables -P INPUT DROP'],
     ]
 
