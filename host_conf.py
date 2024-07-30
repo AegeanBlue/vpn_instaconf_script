@@ -24,7 +24,7 @@ def main():
         new_port = f'Port {user_input_ssh_port}' 
         with open('/etc/ssh/sshd_config', 'r') as ssh_config: 
             ssh_text = ssh_config.read() #converts the thing to string
-            new_text = ssh_text.replace('#Port 22', new_port)
+            new_text = ssh_text.replace('#Port 22', new_port) # this doesn't work whe the line is not commented out apparently. Include more cases
 
         with open('/etc/ssh/sshd_config', 'w') as ssh_config:
             ssh_config.write(new_text)
